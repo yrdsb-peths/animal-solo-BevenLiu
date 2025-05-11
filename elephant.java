@@ -1,19 +1,40 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * The elephant, our hero.
+ * Write a description of class Elephant here.
  * 
- * @author Beven Liu 
- * @version Apr 30
+ * @author (your name) 
+ * @version (a version number or a date)
  */
-public class elephant extends Actor
+public class Elephant extends Actor
 {
     /**
-     * Act - do whatever the elephant wants to do. This method is called whenever
+     * Act - do whatever the Elephant wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act()
     {
-        move(1);
+        // Add your action code here.
+        if(Greenfoot.isKeyDown("left"))
+        {
+            move(-2);
+        }
+        else if(Greenfoot.isKeyDown("right"))
+        {
+            move(2);
+            
+        }
+        eat();
+    }
+    public void eat()
+    {
+        if(isTouching(Apple.class))
+        {
+            removeTouching(Apple.class); 
+            MyWorld world = (MyWorld) getWorld();
+            world.createApple();
+            world.increaseScore();
+        }
     }
 }
+
